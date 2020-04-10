@@ -25,6 +25,10 @@ app.get('/demo', (req, res) => {
 
 app.listen(port, () => console.log('server start at port ' + port));
 
+// Using Infinite Series - Leibniz formula for π
+/**
+ * 4 (1 - 1/3 + 1/5 - 1/7 + 1/9 - ... ) = PI
+ */
 const digitOfPi = iterations => {
   let pi = 0;
   let iterator = sequence();

@@ -1,0 +1,36 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: demo-hpa
+spec:
+  scaleTargetRef: # What do we want to apply scaling toward?
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-demployment # Name of deployment we want to scale
+  minReplicas: 1
+  maxReplicas: 15
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 100
+
+  # desiredReplicas = ceil[currentReplicas * ( currentMetricValue / desiredMetricValue )]
+  behavior:
+    scaleDown:
+      # The value for this option is a duration that specifies how long the autoscaler has to wait before another downscale operation can be performed after the current one has completed.
+      # When managing the scale of a group of replicas using the Horizontal Pod Autoscaler, it is possible that the number of replicas keeps fluctuating frequently due to the dynamic nature of the metrics evaluated.
+      stabilizationWindowSeconds: 1 # 300s is default.
+      policies:
+        - type: Pods
+          value: 5
+          periodSeconds: 1
+    scaleUp:
+      stabilizationWindowSeconds: 1
+      policies:
+        - type: Pods
+          value: 5
+          periodSeconds: 1
+      selectPolicy: Max
