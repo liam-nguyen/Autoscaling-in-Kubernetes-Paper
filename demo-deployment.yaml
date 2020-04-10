@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-demployment
+spec:
+  replicas: 1 # How many copies of each pod do we want?
+  # strategy: # How do want to update the pods?
+  #   type: RollingUpdate #  Default
+  #   rollingUpdate:
+  #     maxSurge: 5 # how many pods we can add at a time
+  #     maxUnavailable: 0 #  how many pods can be unavailable during the rolling update
+  selector: # Which pods are managed by this deployment?
+    matchLabels: # This must match the labels we set on the pod!
+      component: web
+  template: # This template field is a regular pod configuration
+    metadata:
+      labels: # Set labels on the pod.
+        component: web
+    spec:
+      containers:
+        - name: demo
+          image: liamngdev/demo
+          imagePullPolicy: Always # the image is pulled every time the pod is started
+          ports:
+            - containerPort: 3000
+          resources:
+            request:
+              cpu: 200m # Equivalent 200 milliCPU or to 2% of 1 CPU
