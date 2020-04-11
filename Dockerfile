@@ -1,5 +1,7 @@
-FROM node:alpine
+# base image
+FROM node:alpine 
 
+# directory in the image
 WORKDIR /usr/src/app
 
 COPY package*.json ./
