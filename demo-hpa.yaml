@@ -8,14 +8,14 @@ spec:
     kind: Deployment
     name: demo-demployment # Name of deployment we want to scale
   minReplicas: 1
-  maxReplicas: 15
+  maxReplicas: 10
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 100
+          averageUtilization: 20
 
   # desiredReplicas = ceil[currentReplicas * ( currentMetricValue / desiredMetricValue )]
   behavior:
