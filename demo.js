@@ -23,7 +23,7 @@ app.get('/demo', (req, res) => {
   res.end();
 });
 
-app.listen(port, () => console.log('server start at port ' + port));
+app.listen(port, () => console.log('Server starts at port ' + port));
 
 // Using Infinite Series - Leibniz formula for π
 /**

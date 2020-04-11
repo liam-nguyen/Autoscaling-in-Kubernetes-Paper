@@ -27,3 +27,6 @@ spec:
             requests:
               cpu: 100m # Equivalent 100 milliCPU or to 10% of 1 CPU
               memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 300Mi
