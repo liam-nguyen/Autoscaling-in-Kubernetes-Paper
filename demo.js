@@ -3,6 +3,7 @@ const express = require('express');
 const port = process.env.PORT || 3000;
 const app = express();
 
+/** Server code */
 app.get('/', (req, res) => {
   res.write(
     whalesay("Welcome to our demo. Let's calculate digit of PI together"),
@@ -25,9 +26,10 @@ app.get('/demo', (req, res) => {
 
 app.listen(port, () => console.log('Server starts at port ' + port));
 
-// Using Infinite Series - Leibniz formula for π
+/** Utilities code  */
 /**
- * 4 (1 - 1/3 + 1/5 - 1/7 + 1/9 - ... ) = PI
+ * Using Infinite Series - Leibniz formula for π
+ * (1 - 1/3 + 1/5 - 1/7 + 1/9 - ... ) = PI/4
  */
 const digitOfPi = iterations => {
   let pi = 0;

@@ -6,7 +6,7 @@ spec:
   scaleTargetRef: # What do we want to apply scaling toward?
     apiVersion: apps/v1
     kind: Deployment
-    name: demo-demployment # Name of deployment we want to scale
+    name: demo-deployment # Name of deployment we want to scale
   minReplicas: 1
   maxReplicas: 10
   metrics:
