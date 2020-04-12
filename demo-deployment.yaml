@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-demployment
+  name: demo-deployment
 spec:
   replicas: 1 # How many copies of each pod do we want?
   # strategy: # How do want to update the pods?
